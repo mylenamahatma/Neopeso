@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:neopeso/features/onboarding/login.dart';
+import 'package:neopeso/features/login.dart';
 import 'package:neopeso/features/onboarding/onboarding.dart';
 
 class NeopesoApp extends StatelessWidget {
