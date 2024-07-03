@@ -4,5 +4,6 @@ import 'package:flutter/material.dart';
 import 'neopeso_app.dart';
 
 void main() {
-  runApp(DevicePreview(enabled: true, builder: (context) => const NeopesoApp()));
+  runApp(
+      DevicePreview(enabled: true, builder: (context) => const NeopesoApp()));
 }
