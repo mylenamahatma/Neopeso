@@ -1,6 +1,8 @@
+import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
-import 'package:neopeso/common/barraTelaInicial.dart';
+import 'package:neopeso/common/barra_tela_inicial.dart';
 import 'package:neopeso/common/constants/neopeso_colors.dart';
+import 'package:neopeso/common/popup_erro.dart';
 
 class Login extends StatelessWidget {
   const Login({super.key});
@@ -23,6 +25,7 @@ class FormLogin extends StatefulWidget {
 
 class _FormLoginState extends State<FormLogin> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  String? msgErro;
 
   @override
   Widget build(BuildContext context) {
@@ -53,12 +56,24 @@ class _FormLoginState extends State<FormLogin> {
                         const SizedBox(height: 4.0),
                         TextFormField(
                           decoration: InputDecoration(
+                            errorStyle: const TextStyle(height: 0),
                             hintText: 'Digite seu email',
                             contentPadding: const EdgeInsets.all(10.0),
                             border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(10.0),
                             ),
                           ),
+                          validator: (value) {
+                            if (value == null || value.isEmpty) {
+                              return "";
+                            }
+                            if (!EmailValidator.validate(value.toString())) {
+                              msgErro = "E-mail inválido.";
+                              return "";
+                            }
+                            msgErro == null;
+                            return null;
+                          },
                         ),
                         const SizedBox(height: 24.0),
                         const Text(
@@ -71,18 +86,29 @@ class _FormLoginState extends State<FormLogin> {
                         const SizedBox(height: 4.0),
                         TextFormField(
                           decoration: InputDecoration(
+                            errorStyle: const TextStyle(height: 0),
                             hintText: 'Digite sua senha',
                             contentPadding: const EdgeInsets.all(10.0),
                             border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(10.0),
                             ),
                           ),
+                          validator: (value) {
+                            if (value == null || value.isEmpty) {
+                              return "";
+                            } else {
+                              if (value != "1234") {
+                                msgErro = "Senha inválida.";
+                                return "";
+                              }
+                            }
+                            msgErro == null;
+                            return null;
+                          },
                         ),
                         const SizedBox(height: 12.0),
                         GestureDetector(
-                          onTap: () {
-                            
-                          },
+                          onTap: () {},
                           child: const Text(
                             'Esqueci minha senha',
                             style: TextStyle(
@@ -95,17 +121,30 @@ class _FormLoginState extends State<FormLogin> {
                         ElevatedButton(
                           style: ElevatedButton.styleFrom(
                             backgroundColor: const Color(0xFF00A271),
-                            padding: const EdgeInsets.symmetric(horizontal: 32.0, vertical: 16.0),
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: 32.0, vertical: 16.0),
                             minimumSize: const Size(double.infinity, 55),
                           ),
                           onPressed: () {
                             if (_formKey.currentState!.validate()) {
-                              
+                              print("Login OK");
+                            } else {
+                              if (msgErro != null) {
+                                showDialog(
+                                  context: context,
+                                  builder: (BuildContext context) => PopupErro(
+                                    msgErro: msgErro!,
+                                  ),
+                                );
+                              }
                             }
                           },
                           child: const Text(
                             'Entrar',
-                            style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 15),
+                            style: TextStyle(
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 15),
                           ),
                         ),
                         const SizedBox(height: 24),
@@ -115,7 +154,8 @@ class _FormLoginState extends State<FormLogin> {
                           onPressed: () {},
                           style: ElevatedButton.styleFrom(
                             backgroundColor: Colors.white,
-                            padding: const EdgeInsets.symmetric(horizontal: 32.0, vertical: 16.0),
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: 32.0, vertical: 16.0),
                             minimumSize: const Size(double.infinity, 55),
                             elevation: 4,
                           ),
@@ -125,9 +165,9 @@ class _FormLoginState extends State<FormLogin> {
                               const Text(
                                 "Acesse com o Google",
                                 style: TextStyle(
-                                  fontSize: 16, 
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.black),
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.black),
                               ),
                               const SizedBox(width: 12),
                               Image.asset(
@@ -142,7 +182,8 @@ class _FormLoginState extends State<FormLogin> {
                           onPressed: () {},
                           style: ElevatedButton.styleFrom(
                             backgroundColor: Colors.white,
-                            padding: const EdgeInsets.symmetric(horizontal: 32.0, vertical: 16.0),
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: 32.0, vertical: 16.0),
                             minimumSize: const Size(double.infinity, 55),
                             elevation: 4,
                           ),
@@ -152,9 +193,9 @@ class _FormLoginState extends State<FormLogin> {
                               const Text(
                                 "Acesse com o Apple ID",
                                 style: TextStyle(
-                                  fontSize: 16, 
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.black),
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.black),
                               ),
                               const SizedBox(width: 12),
                               Image.asset(
