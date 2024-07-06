@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:neopeso/features/login.dart';
 import 'package:neopeso/features/onboarding/onboarding.dart';
 
 class NeopesoApp extends StatelessWidget {
@@ -8,7 +7,7 @@ class NeopesoApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(
-      home: Login(),
+      home: Onboarding(),
     );
   }
 }
