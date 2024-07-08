@@ -193,9 +193,7 @@ class _FormCadastroProfissionalState extends State<FormCadastroProfissional> {
                           ),
                           suffixIcon: IconButton(
                             icon: const Icon(Icons.visibility),
-                            onPressed: () {
-                              // Toggle password visibility
-                            },
+                            onPressed: () {},
                           ),
                         ),
                         obscureText: true,

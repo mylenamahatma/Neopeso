@@ -21,8 +21,8 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       home: Sobre(),
-      locale: DevicePreview.locale(context), // Add the locale here
-      builder: DevicePreview.appBuilder, // Add the builder here
+      locale: DevicePreview.locale(context),
+      builder: DevicePreview.appBuilder,
     );
   }
 }
@@ -56,7 +56,7 @@ class Sobre extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: Image.asset(
-              'assets/images/logo.png', // Update the path as needed
+              'assets/images/logo.png',
               height: 30,
             ),
           ),
@@ -75,7 +75,7 @@ class Sobre extends StatelessWidget {
                   color: Colors.grey.withOpacity(0.5),
                   spreadRadius: 2,
                   blurRadius: 5,
-                  offset: const Offset(0, 3), // changes position of shadow
+                  offset: const Offset(0, 3),
                 ),
               ],
             ),
@@ -83,7 +83,7 @@ class Sobre extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 Image.asset(
-                  'assets/images/logo.png', // Update the path as needed
+                  'assets/images/logo.png',
                   height: 60,
                 ),
                 const SizedBox(height: 16),
@@ -92,8 +92,7 @@ class Sobre extends StatelessWidget {
                   style: GoogleFonts.montserrat(
                     fontSize: 24,
                     fontWeight: FontWeight.bold,
-                    color:
-                        NeopesoColors.green, // Updated to use an existing color
+                    color: NeopesoColors.green,
                   ),
                 ),
                 const SizedBox(height: 16),
