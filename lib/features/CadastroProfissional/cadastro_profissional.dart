@@ -31,6 +31,8 @@ class _FormCadastroProfissionalState extends State<FormCadastroProfissional> {
   final TextEditingController _confirmPasswordController =
       TextEditingController();
   String? msgErro;
+  bool _obscurePassword = true;
+  bool _obscureConfirmPassword = true;
 
   void _registerProfessional() {
     if (_formKey.currentState!.validate()) {
@@ -125,13 +127,15 @@ class _FormCadastroProfissionalState extends State<FormCadastroProfissional> {
                             borderRadius: BorderRadius.circular(10.0),
                           ),
                           suffixIcon: IconButton(
-                            icon: const Icon(Icons.visibility),
+                            icon: Icon(Icons.visibility),
                             onPressed: () {
-                              // Toggle password visibility
+                              setState(() {
+                                _obscurePassword = !_obscurePassword;
+                              });
                             },
                           ),
                         ),
-                        obscureText: true,
+                        obscureText: _obscurePassword,
                         validator: (value) {
                           if (value == null || value.isEmpty) {
                             return 'Por favor, crie uma senha';
@@ -154,17 +158,21 @@ class _FormCadastroProfissionalState extends State<FormCadastroProfissional> {
                       TextFormField(
                         controller: _confirmPasswordController,
                         decoration: InputDecoration(
-                          hintText: 'Digite sua senha',
+                          hintText: 'Confirme sua senha',
                           contentPadding: const EdgeInsets.all(10.0),
                           border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(10.0),
                           ),
                           suffixIcon: IconButton(
-                            icon: const Icon(Icons.visibility),
-                            onPressed: () {},
+                            icon: Icon(Icons.visibility),
+                            onPressed: () {
+                              setState(() {
+                                _obscureConfirmPassword = !_obscureConfirmPassword;
+                              });
+                            },
                           ),
                         ),
-                        obscureText: true,
+                        obscureText: _obscureConfirmPassword,
                         validator: (value) {
                           if (value == null || value.isEmpty) {
                             return 'Por favor, confirme a senha';

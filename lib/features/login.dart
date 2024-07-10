@@ -26,6 +26,7 @@ class FormLogin extends StatefulWidget {
 class _FormLoginState extends State<FormLogin> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   String? msgErro;
+  bool _obscureText = true;
 
   @override
   Widget build(BuildContext context) {
@@ -92,7 +93,16 @@ class _FormLoginState extends State<FormLogin> {
                             border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(10.0),
                             ),
+                            suffixIcon: IconButton(
+                              icon: Icon(_obscureText ? Icons.visibility : Icons.visibility_off),
+                              onPressed: () {
+                                setState(() {
+                                  _obscureText = !_obscureText;
+                                });
+                              },
+                            ),
                           ),
+                          obscureText: _obscureText, // Define se a senha está obscurecida ou não
                           validator: (value) {
                             if (value == null || value.isEmpty) {
                               return "";
@@ -102,7 +112,7 @@ class _FormLoginState extends State<FormLogin> {
                                 return "";
                               }
                             }
-                            msgErro == null;
+                            msgErro = null;
                             return null;
                           },
                         ),
@@ -127,7 +137,7 @@ class _FormLoginState extends State<FormLogin> {
                           ),
                           onPressed: () {
                             if (_formKey.currentState!.validate()) {
-                              print("Login OK");
+                              Navigator.pushNamed(context, '/home');
                             } else {
                               if (msgErro != null) {
                                 showDialog(
