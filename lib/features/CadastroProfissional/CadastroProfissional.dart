@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:neopeso/common/barra_tela_inicial.dart';
 import 'package:neopeso/common/constants/neopeso_colors.dart';
 
 class CadastroProfissional extends StatelessWidget {
@@ -48,42 +49,9 @@ class _FormCadastroProfissionalState extends State<FormCadastroProfissional> {
             width: MediaQuery.of(context).size.width * 0.85,
             padding: const EdgeInsets.all(16.0),
             child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Image.asset(
-                  'assets/images/logo.png',
-                  height: 80,
-                ),
-                const SizedBox(height: 16),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    ElevatedButton(
-                      onPressed: () {},
-                      child: const Text('Acesso'),
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.white,
-                        foregroundColor: Colors.black,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(20.0),
-                        ),
-                      ),
-                    ),
-                    const SizedBox(width: 8),
-                    ElevatedButton(
-                      onPressed: () {},
-                      child: const Text('Cadastro'),
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.lightBlue,
-                        foregroundColor: Colors.white,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(20.0),
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-                const SizedBox(height: 16),
+                const BarraTelaInicial(),
                 Form(
                   key: _formKey,
                   child: Column(
@@ -220,15 +188,13 @@ class _FormCadastroProfissionalState extends State<FormCadastroProfissional> {
                             ),
                             minimumSize: const Size(double.infinity, 55),
                           ),
-                          child: Text(
+                          child: const Text(
                             'Entrar',
-                            style: GoogleFonts.montserrat(
-                              fontSize: 18,
-                              fontWeight: FontWeight.bold,
-                            ).copyWith(
-                              color: NeopesoColors.white,
+                            style: TextStyle(
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 15),
                             ),
-                          ),
                         ),
                       ),
                       const SizedBox(height: 16.0),

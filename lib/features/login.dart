@@ -120,7 +120,7 @@ class _FormLoginState extends State<FormLogin> {
                         const SizedBox(height: 24.0),
                         ElevatedButton(
                           style: ElevatedButton.styleFrom(
-                            backgroundColor: const Color(0xFF00A271),
+                            backgroundColor: NeopesoColors.green,
                             padding: const EdgeInsets.symmetric(
                                 horizontal: 32.0, vertical: 16.0),
                             minimumSize: const Size(double.infinity, 55),
@@ -145,8 +145,8 @@ class _FormLoginState extends State<FormLogin> {
                                 color: Colors.white,
                                 fontWeight: FontWeight.bold,
                                 fontSize: 15),
+                            ),
                           ),
-                        ),
                         const SizedBox(height: 24),
                         const Divider(),
                         const SizedBox(height: 24),
