@@ -56,7 +56,7 @@ class Sobre extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: Image.asset(
-              'assets/images/logo.png',
+              'assets/images/simbolo1.png',
               height: 30,
             ),
           ),
@@ -87,22 +87,14 @@ class Sobre extends StatelessWidget {
                   height: 60,
                 ),
                 const SizedBox(height: 16),
+                const SizedBox(height: 15),
                 Text(
-                  'NeoPeso',
-                  style: GoogleFonts.montserrat(
-                    fontSize: 24,
-                    fontWeight: FontWeight.bold,
-                    color: NeopesoColors.green,
-                  ),
-                ),
-                const SizedBox(height: 16),
-                Text(
-                  'A interface do aplicativo NeoPeso, foi desenvolvida pelos estudantes de graduação do curso de Designer Gráfico da Universidade Federal de Pernambuco (UFPE) Campus Caruaru, João Victor Monteiro Vieira e Jessyellen Emanuelley de Lima, sob a orientação da professora Dr. Luciana Lopes Freire. A interface para a previsão de LBW, foi desenvolvida entre a parceria entre esses talentosos membros da UFPE e os estudantes de pós-graduação da UPE que fazem parte do grupo de pesquisa DOTLABBRAZIL, especificamente, envolvidos no projeto de análise de desempenhos dos modelos para a predição LWB. O que no final resultou em uma ferramenta robusta e intuitiva, projetada exclusivamente para profissionais de saúde.',
+                  'A interface do aplicativo NeoPeso foi desenvolvida pelos estudantes de graduação do curso de Designer Gráfico da Universidade Federal de Pernambuco (UFPE) Campus Caruaru, João Victor Monteiro Vieira e Jessyellen Emanuelley de Lima, sob a orientação da professora Dr. Luciana Lopes Freire. As primeiras telas na parte de desenvolvimento front-end do aplicativo foram criadas pelos alunos do curso de Engenharia de Software da Universidade de Pernambuco (UPE) Campus Garanhuns: Beatriz Leite, João Neto, Mateus Vasconcelos e Mylena Mahatma sob orientação do Professor Elisson Rocha. A interface para a previsão de LBW foi criada em colaboração com esses talentosos membros da UFPE e os estudantes de pós-graduação da UPE que fazem parte do grupo de pesquisa DOTLABBRAZIL, especificamente envolvidos no projeto de análise de desempenhos dos modelos para a predição de LBW. O resultado final é uma ferramenta robusta e intuitiva, projetada exclusivamente para profissionais de saúde.',
                   style: GoogleFonts.montserrat(
                     fontSize: 14,
                     color: Colors.black,
                   ),
-                  textAlign: TextAlign.center,
+                  textAlign: TextAlign.justify,
                 ),
               ],
             ),
