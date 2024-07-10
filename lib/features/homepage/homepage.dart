@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:neopeso/common/constants/neopeso_colors.dart';
+import 'package:neopeso/features/Sobre/sobre.dart';
 
 class Homepage extends StatelessWidget {
   const Homepage({super.key});
@@ -116,7 +117,9 @@ class Homepage extends StatelessWidget {
         actions: <Widget>[
           IconButton(
             icon: const Icon(Icons.question_mark_rounded),
-            onPressed: () {},
+            onPressed: () {
+              Navigator.push(context, MaterialPageRoute(builder: (context) => const Sobre()));
+            },
           )
         ],
       ),

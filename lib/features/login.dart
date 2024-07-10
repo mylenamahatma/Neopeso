@@ -76,7 +76,7 @@ class _FormLoginState extends State<FormLogin> {
                             return null;
                           },
                         ),
-                        const SizedBox(height: 24.0),
+                        const SizedBox(height: 16.0),
                         const Text(
                           'Senha',
                           style: TextStyle(
@@ -94,7 +94,9 @@ class _FormLoginState extends State<FormLogin> {
                               borderRadius: BorderRadius.circular(10.0),
                             ),
                             suffixIcon: IconButton(
-                              icon: Icon(_obscureText ? Icons.visibility : Icons.visibility_off),
+                              icon: Icon(_obscureText
+                                  ? Icons.visibility
+                                  : Icons.visibility_off),
                               onPressed: () {
                                 setState(() {
                                   _obscureText = !_obscureText;
@@ -102,7 +104,7 @@ class _FormLoginState extends State<FormLogin> {
                               },
                             ),
                           ),
-                          obscureText: _obscureText, // Define se a senha está obscurecida ou não
+                          obscureText: _obscureText,
                           validator: (value) {
                             if (value == null || value.isEmpty) {
                               return "";
@@ -155,8 +157,8 @@ class _FormLoginState extends State<FormLogin> {
                                 color: Colors.white,
                                 fontWeight: FontWeight.bold,
                                 fontSize: 15),
-                            ),
                           ),
+                        ),
                         const SizedBox(height: 24),
                         const Divider(),
                         const SizedBox(height: 24),

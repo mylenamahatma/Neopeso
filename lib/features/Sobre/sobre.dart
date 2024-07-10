@@ -1,31 +1,6 @@
-import 'package:device_preview/device_preview.dart';
 import 'package:flutter/material.dart';
 import 'package:neopeso/common/constants/neopeso_colors.dart';
 import 'package:google_fonts/google_fonts.dart';
-
-void main() {
-  runApp(
-    DevicePreview(
-      enabled: true,
-      builder: (context) => MyApp(),
-    ),
-  );
-}
-
-class MyApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Sobre o App',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: Sobre(),
-      locale: DevicePreview.locale(context),
-      builder: DevicePreview.appBuilder,
-    );
-  }
-}
 
 class Sobre extends StatelessWidget {
   const Sobre({super.key});
