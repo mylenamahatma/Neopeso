@@ -1,8 +1,8 @@
 import 'package:device_preview/device_preview.dart';
 import 'package:flutter/material.dart';
-import 'features/cadastro_paciente_dados_pessoais.dart';
-import 'features/cadastro_paciente_gestacao.dart';
-import 'features/cadastro_paciente_informacoes_partos.dart';
+import 'features/patient/cadastro_paciente_dados_pessoais.dart';
+import 'features/patient/cadastro_paciente_gestacao.dart';
+import 'features/patient/cadastro_paciente_informacoes_partos.dart';
 
 
 void main() {
