@@ -1,26 +1,26 @@
 import 'package:flutter/material.dart';
-import 'predicao_paciente_partos.dart';
+import 'birth_data_prediction.dart';
 
-class PredicaoGestacaoDados extends StatelessWidget {
-  const PredicaoGestacaoDados({Key? key}) : super(key: key);
+class PreganancyDataPrediction extends StatelessWidget {
+  const PreganancyDataPrediction({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      body: const FormCadastroPacienteGestacaoDados(),
+      body: const FormPreganancyDataPrediction(),
     );
   }
 }
 
-class FormCadastroPacienteGestacaoDados extends StatefulWidget {
-  const FormCadastroPacienteGestacaoDados({Key? key}) : super(key: key);
+class FormPreganancyDataPrediction extends StatefulWidget {
+  const FormPreganancyDataPrediction({Key? key}) : super(key: key);
 
   @override
-  State<FormCadastroPacienteGestacaoDados> createState() => _FormCadastroPacienteGestacaoDadosState();
+  State<FormPreganancyDataPrediction> createState() => _FormPreganancyDataPredictionState();
 }
 
-class _FormCadastroPacienteGestacaoDadosState extends State<FormCadastroPacienteGestacaoDados> {
+class _FormPreganancyDataPredictionState extends State<FormPreganancyDataPrediction> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   String? anomalia;
   String? mesGestacao;
@@ -272,7 +272,7 @@ class _FormCadastroPacienteGestacaoDadosState extends State<FormCadastroPaciente
                                   Navigator.push(
                                     context,
                                     MaterialPageRoute(
-                                      builder: (context) => const PredicaoPartosDados(),
+                                      builder: (context) => const BirthDataPrediction(),
                                     ),
                                   );
                                 } else {
