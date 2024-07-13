@@ -1,21 +1,43 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:neopeso/common/constants/neopeso_colors.dart';
+import 'package:neopeso/entities/Prediction.dart';
+import 'package:neopeso/entities/patient.dart';
 import 'package:neopeso/features/Sobre/sobre.dart';
+
+import '../pacient_page/pacient_page.dart';
 
 class Homepage extends StatelessWidget {
   const Homepage({super.key});
 
-  void _onCardTap(BuildContext context, String cardTitle) {
-    // Navegar para a página do paciente (será implementada futuramente)
-    // Navigator.push(context, MaterialPageRoute(builder: (context) => PacientePage(cardTitle)));
+  void _onCardTap(BuildContext context, Patient patient) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => PacientPage(patient: patient),
+      ),
+    );
   }
 
   List<Widget> _buildPatientCards(BuildContext context, double screenWidth) {
     // Exemplo de lista de pacientes, que virá depois pelo banco
-    final List<Map<String, String>> patients = [
-      {'title': 'Juana Pereira da Silva', 'subtitle': '098-134-986-76'},
-      {'title': 'Carmem Lucia Teixeira', 'subtitle': '498-134-666-34'},
+    final List<Patient> patients = [
+      Patient(
+        name: 'Juana Pereira da Silva',
+        cpf: '098-134-986-76',
+        predictions: [
+          Prediction(date: DateTime.now(), value: 1.0),
+          Prediction(date: DateTime.now().add(const Duration(days: 1)), value: 2.0),
+        ],
+      ),
+      Patient(
+        name: 'Carmem Lucia Teixeira',
+        cpf: '498-134-666-34',
+        predictions: [
+          Prediction(date: DateTime.now(), value: 3.0),
+          Prediction(date: DateTime.now().add(const Duration(days: 1)), value: 4.0),
+        ],
+      ),
     ];
 
     List<Widget> cards = [];
@@ -28,17 +50,17 @@ class Homepage extends StatelessWidget {
           width: screenWidth - 80,
           child: Card(
             child: InkWell(
-              onTap: () => _onCardTap(context, patient['title']!),
+              onTap: () => _onCardTap(context, patient),
               child: ListTile(
                 title: Text(
-                  patient['title']!,
+                  patient.name,
                   style: GoogleFonts.montserrat(
                     fontSize: 20,
                     fontWeight: FontWeight.normal,
                   ),
                 ),
                 subtitle: Text(
-                  patient['subtitle']!,
+                  patient.cpf,
                   style: GoogleFonts.montserrat(
                     fontSize: 18,
                     fontWeight: FontWeight.normal,
