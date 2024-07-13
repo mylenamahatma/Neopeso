@@ -6,6 +6,10 @@ class BarraTelaInicial extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final currentRoute = ModalRoute.of(context)?.settings.name;
+
+    bool isCadastroRoute = currentRoute == '/cadastroProfissional';
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -24,28 +28,41 @@ class BarraTelaInicial extends StatelessWidget {
           children: [
             ElevatedButton(
               style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.lightBlueAccent,
+                backgroundColor: isCadastroRoute ? NeopesoColors.white : Colors.lightBlueAccent,
                 padding: const EdgeInsets.symmetric(horizontal: 32.0, vertical: 16.0),
                 minimumSize: Size(MediaQuery.of(context).size.width * 0.3, 0),
-                elevation: 4
+                elevation: 4,
+                side: isCadastroRoute ? const BorderSide(width: 1.0, color: Colors.black) :  BorderSide.none,
               ),
-              onPressed: () {},
-              child: const Text(
+              onPressed: () {
+                Navigator.pushNamed(context, '/login');
+              },
+              child: Text(
                 'Acesso',
-                style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 16),
+                style: TextStyle(
+                  color: isCadastroRoute ? Colors.black : Colors.white,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 16,
+                ),
               ),
             ),
             OutlinedButton(
               style: ElevatedButton.styleFrom(
-                backgroundColor: NeopesoColors.white,
+                backgroundColor: isCadastroRoute ? Colors.lightBlueAccent : NeopesoColors.white,
                 padding: const EdgeInsets.symmetric(horizontal: 32.0, vertical: 16.0),
                 minimumSize: Size(MediaQuery.of(context).size.width * 0.3, 0),
-                side: const BorderSide(width: 1.0, color: Colors.black)
+                side: isCadastroRoute ? BorderSide.none : const BorderSide(width: 1.0, color: Colors.black),
               ),
-              onPressed: () {},
-              child: const Text(
+              onPressed: () {
+                Navigator.pushNamed(context, '/cadastroProfissional');
+              },
+              child: Text(
                 'Cadastro',
-                style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold, fontSize: 16),
+                style: TextStyle(
+                  color: isCadastroRoute ? Colors.white : Colors.black,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 16,
+                ),
               ),
             ),
           ],
