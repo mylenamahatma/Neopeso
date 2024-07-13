@@ -1,8 +1,8 @@
 import 'package:device_preview/device_preview.dart';
 import 'package:flutter/material.dart';
-import 'features/patient/cadastro_paciente_dados_pessoais.dart';
-import 'features/patient/cadastro_paciente_gestacao.dart';
-import 'features/patient/cadastro_paciente_informacoes_partos.dart';
+import 'features/patient/predicao_dados_pessoais.dart';
+import 'features/patient/predicao_paciente_gestacao.dart';
+import 'features/patient/predicao_paciente_partos.dart';
 
 
 void main() {
@@ -20,11 +20,11 @@ class NeopesoApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const CadastroPacienteDadosPessoais(),
+      home: const PredicaoPacienteDadosPessoais(),
       routes: {
-        '/cadastro_paciente_1': (context) => const CadastroPacienteDadosPessoais(),
-        '/cadastro_paciente_2': (context) => const CadastroPacienteGestacaoDados(),
-        '/cadastro_paciente_3': (context) => const CadastroPacientePartosDados(),
+        '/cadastro_paciente_1': (context) => const PredicaoPacienteDadosPessoais(),
+        '/cadastro_paciente_2': (context) => const PredicaoGestacaoDados(),
+        '/cadastro_paciente_3': (context) => const PredicaoPartosDados(),
       },
     );
   }

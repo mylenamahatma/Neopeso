@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'cadastro_paciente_informacoes_partos.dart';
+import 'predicao_paciente_partos.dart';
 
-class CadastroPacienteGestacaoDados extends StatelessWidget {
-  const CadastroPacienteGestacaoDados({Key? key}) : super(key: key);
+class PredicaoGestacaoDados extends StatelessWidget {
+  const PredicaoGestacaoDados({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -57,15 +57,19 @@ class _FormCadastroPacienteGestacaoDadosState extends State<FormCadastroPaciente
                         const SizedBox(height: 8.0),
                         Row(
                           children: [
-                            Container(
-                              width: MediaQuery.of(context).size.width * 0.85 * 0.66666,
-                              height: 8,
-                              color: Colors.blue,
+                            Expanded(
+                              flex: 2,
+                              child: Container(
+                                height: 8,
+                                color: Colors.blue,
+                              ),
                             ),
-                            Container(
-                              width: MediaQuery.of(context).size.width * 0.85 * 0.33334,
-                              height: 8,
-                              color: Colors.grey,
+                            Expanded(
+                              flex: 1,
+                              child: Container(
+                                height: 8,
+                                color: Colors.grey,
+                              ),
                             ),
                           ],
                         ),
@@ -248,21 +252,31 @@ class _FormCadastroPacienteGestacaoDadosState extends State<FormCadastroPaciente
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             OutlinedButton(
+                              style: OutlinedButton.styleFrom(
+                                backgroundColor: Colors.white,
+                                side: BorderSide(color: Color(0xFF295066)),
+                                foregroundColor: Color(0xFF295066),
+                              ),
                               onPressed: () {
                                 Navigator.pop(context);
                               },
                               child: const Text('Voltar'),
                             ),
                             ElevatedButton(
+                              style: ElevatedButton.styleFrom(
+                                backgroundColor: Color(0xFF295066),
+                                foregroundColor: Colors.white,//acabei de adicionar
+                              ),
                               onPressed: () {
                                 if (_formKey.currentState!.validate()) {
                                   Navigator.push(
                                     context,
                                     MaterialPageRoute(
-                                        builder: (context) => const CadastroPacientePartosDados()),
+                                      builder: (context) => const PredicaoPartosDados(),
+                                    ),
                                   );
                                 } else {
-                                  // Handle validation errors here
+
                                 }
                               },
                               child: const Text('Próximo'),

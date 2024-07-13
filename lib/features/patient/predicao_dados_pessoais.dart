@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'cadastro_paciente_gestacao.dart';
+import 'predicao_paciente_gestacao.dart';
 
-class CadastroPacienteDadosPessoais extends StatelessWidget {
-  const CadastroPacienteDadosPessoais({Key? key}) : super(key: key);
+class PredicaoPacienteDadosPessoais extends StatelessWidget {
+  const PredicaoPacienteDadosPessoais({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -273,9 +273,6 @@ class _FormCadastroPacienteState extends State<FormCadastroPaciente> {
                             'Ensino Médio Completo',
                             'Graduação Incompleta',
                             'Graduação Completa',
-                            'Fundamental I Incompleto ou não Especificado',
-                            'Fundamental II Incompleto ou não Especificado',
-                            'Ensino Médio Incompleto ou não Especificado',
                             'Não informado',
                           ].map((String value) {
                             return DropdownMenuItem<String>(
@@ -300,19 +297,27 @@ class _FormCadastroPacienteState extends State<FormCadastroPaciente> {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             OutlinedButton(
+                              style: OutlinedButton.styleFrom(
+                                backgroundColor: Colors.white,
+                                side: BorderSide(color: Color(0xFF295066)),
+                                foregroundColor: Color(0xFF295066),
+                              ),
                               onPressed: () {
                                 Navigator.pop(context);
                               },
                               child: const Text('Voltar'),
                             ),
                             ElevatedButton(
+                              style: ElevatedButton.styleFrom(
+                                backgroundColor: Color(0xFF295066),
+                                foregroundColor: Colors.white,
+                              ),
                               onPressed: () {
                                 if (_formKey.currentState!.validate()) {
                                   Navigator.push(
                                     context,
                                     MaterialPageRoute(
-                                      builder: (context) =>
-                                          const CadastroPacienteGestacaoDados(),
+                                      builder: (context) => const PredicaoGestacaoDados(),
                                     ),
                                   );
                                 } else {

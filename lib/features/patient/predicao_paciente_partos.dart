@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class CadastroPacientePartosDados extends StatelessWidget {
-  const CadastroPacientePartosDados({Key? key}) : super(key: key);
+class PredicaoPartosDados extends StatelessWidget {
+  const PredicaoPartosDados({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -94,12 +94,21 @@ class _FormCadastroPaciente3State extends State<FormCadastroPaciente3> {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             OutlinedButton(
+                              style: OutlinedButton.styleFrom(
+                                backgroundColor: Colors.white,
+                                side: BorderSide(color: Color(0xFF295066)),
+                                foregroundColor: Color(0xFF295066),
+                              ),
                               onPressed: () {
                                 Navigator.pop(context);
                               },
                               child: const Text('Voltar'),
                             ),
                             ElevatedButton(
+                              style: ElevatedButton.styleFrom(
+                                backgroundColor: Color(0xFF295066),
+                                foregroundColor: Colors.white,
+                              ),
                               onPressed: () {
                                 if (_formKey.currentState!.validate()) {
                                   _enviarDados();
