@@ -26,6 +26,7 @@ class FormLogin extends StatefulWidget {
 class _FormLoginState extends State<FormLogin> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   String? msgErro;
+  bool _obscureText = true;
 
   @override
   Widget build(BuildContext context) {
@@ -75,7 +76,7 @@ class _FormLoginState extends State<FormLogin> {
                             return null;
                           },
                         ),
-                        const SizedBox(height: 24.0),
+                        const SizedBox(height: 16.0),
                         const Text(
                           'Senha',
                           style: TextStyle(
@@ -92,7 +93,18 @@ class _FormLoginState extends State<FormLogin> {
                             border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(10.0),
                             ),
+                            suffixIcon: IconButton(
+                              icon: Icon(_obscureText
+                                  ? Icons.visibility
+                                  : Icons.visibility_off),
+                              onPressed: () {
+                                setState(() {
+                                  _obscureText = !_obscureText;
+                                });
+                              },
+                            ),
                           ),
+                          obscureText: _obscureText,
                           validator: (value) {
                             if (value == null || value.isEmpty) {
                               return "";
@@ -102,7 +114,7 @@ class _FormLoginState extends State<FormLogin> {
                                 return "";
                               }
                             }
-                            msgErro == null;
+                            msgErro = null;
                             return null;
                           },
                         ),
@@ -120,14 +132,14 @@ class _FormLoginState extends State<FormLogin> {
                         const SizedBox(height: 24.0),
                         ElevatedButton(
                           style: ElevatedButton.styleFrom(
-                            backgroundColor: const Color(0xFF00A271),
+                            backgroundColor: NeopesoColors.green,
                             padding: const EdgeInsets.symmetric(
                                 horizontal: 32.0, vertical: 16.0),
                             minimumSize: const Size(double.infinity, 55),
                           ),
                           onPressed: () {
                             if (_formKey.currentState!.validate()) {
-                              print("Login OK");
+                              Navigator.pushNamed(context, '/home');
                             } else {
                               if (msgErro != null) {
                                 showDialog(
