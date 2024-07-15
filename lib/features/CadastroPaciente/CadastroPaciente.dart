@@ -28,7 +28,7 @@ class _CadastroPacienteState extends State<CadastroPaciente> {
           },
         ),
         title: Image.asset(
-          'assets/images/logo.png', // Certifique-se de que o caminho da imagem esteja correto
+          'assets/images/logo.png', 
           height: 40,
         ),
         centerTitle: true,
@@ -127,7 +127,7 @@ class _CadastroPacienteState extends State<CadastroPaciente> {
                         }
                       },
                       style: ElevatedButton.styleFrom(
-                        backgroundColor: NeopesoColors.green, // Corrigido aqui
+                        backgroundColor: NeopesoColors.green, 
                         padding: const EdgeInsets.symmetric(
                             horizontal: 50, vertical: 15),
                         textStyle: GoogleFonts.montserrat(
