@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:neopeso/features/results_page/results_page.dart';
 
 class BirthDataPrediction extends StatelessWidget {
   const BirthDataPrediction({Key? key}) : super(key: key);
@@ -111,7 +112,12 @@ class _FormBirthDataPredictionState extends State<FormBirthDataPrediction> {
                               ),
                               onPressed: () {
                                 if (_formKey.currentState!.validate()) {
-                                  _enviarDados();
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) => const ResultsPage(),
+                                    ),
+                                  );
                                 } else {
                                   // Handle validation errors here
                                 }
@@ -200,7 +206,4 @@ class _FormBirthDataPredictionState extends State<FormBirthDataPrediction> {
     );
   }
 
-  void _enviarDados() {
-    // aqui será implementada a função para enviar os dados
-  }
 }

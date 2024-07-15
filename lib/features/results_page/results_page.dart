@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:neopeso/common/constants/neopeso_colors.dart';
+import 'package:neopeso/features/BarraLateral/BarraLateral.dart';
 import 'package:neopeso/features/homepage/homepage.dart';
-import '../../common/constants/neopeso_colors.dart';
 
 class ResultsPage extends StatelessWidget {
-  const ResultsPage({super.key});
+  const ResultsPage({Key? key}) : super(key: key);
 
   Widget _buildResultCard(BuildContext context, double screenWidth, double screenHeight) {
     return Container(
@@ -75,7 +76,7 @@ class ResultsPage extends StatelessWidget {
     );
   }
 
-  Widget _buildBottomButton() {
+  Widget _buildBottomButton(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.fromLTRB(8, 8, 8, 32),
       child: Row(
@@ -85,7 +86,9 @@ class ResultsPage extends StatelessWidget {
             height: 52,
             width: 245,
             child: ElevatedButton.icon(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.pushNamed(context, '/PersonalDataPrediction');
+              },
               icon: const Icon(Icons.add, color: NeopesoColors.white),
               label: Text(
                 'Nova Predição',
@@ -111,13 +114,18 @@ class ResultsPage extends StatelessWidget {
     double screenWidth = MediaQuery.of(context).size.width;
     double screenHeight = MediaQuery.of(context).size.height;
 
+    final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
+
     return Scaffold(
+      key: _scaffoldKey,
       appBar: AppBar(
         backgroundColor: NeopesoColors.white,
         elevation: 1.0,
         leading: IconButton(
           icon: const Icon(Icons.menu),
-          onPressed: () {},
+          onPressed: () {
+            _scaffoldKey.currentState?.openDrawer();
+          },
         ),
         title: Text(
           'Resultados',
@@ -131,11 +139,13 @@ class ResultsPage extends StatelessWidget {
           IconButton(
             icon: const Icon(Icons.home),
             onPressed: () {
-              Navigator.push(context, MaterialPageRoute(builder: (context) => const Homepage()));
+              Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const Homepage()));
             },
           )
         ],
       ),
+      drawer: BarraLateral(
+          scaffoldKey: _scaffoldKey),
       body: Stack(
         children: <Widget>[
           Container(
@@ -168,7 +178,7 @@ class ResultsPage extends StatelessWidget {
               const Spacer(), // Adiciona espaço flexível acima do card
               _buildResultCard(context, screenWidth, screenHeight),
               const Spacer(), // Adiciona espaço flexível abaixo do card
-              _buildBottomButton(),
+              _buildBottomButton(context),
             ],
           ),
         ],

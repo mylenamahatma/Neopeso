@@ -3,8 +3,8 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:neopeso/common/constants/neopeso_colors.dart';
 import 'package:neopeso/entities/Prediction.dart';
 import 'package:neopeso/entities/patient.dart';
+import 'package:neopeso/features/BarraLateral/BarraLateral.dart';
 import 'package:neopeso/features/Sobre/sobre.dart';
-
 import '../pacient_page/pacient_page.dart';
 
 class Homepage extends StatelessWidget {
@@ -20,14 +20,14 @@ class Homepage extends StatelessWidget {
   }
 
   List<Widget> _buildPatientCards(BuildContext context, double screenWidth) {
-    // Exemplo de lista de pacientes, que virá depois pelo banco
     final List<Patient> patients = [
       Patient(
         name: 'Juana Pereira da Silva',
         cpf: '098-134-986-76',
         predictions: [
           Prediction(date: DateTime.now(), value: 1.0),
-          Prediction(date: DateTime.now().add(const Duration(days: 1)), value: 2.0),
+          Prediction(
+              date: DateTime.now().add(const Duration(days: 1)), value: 2.0),
         ],
       ),
       Patient(
@@ -35,13 +35,15 @@ class Homepage extends StatelessWidget {
         cpf: '498-134-666-34',
         predictions: [
           Prediction(date: DateTime.now(), value: 3.0),
-          Prediction(date: DateTime.now().add(const Duration(days: 1)), value: 4.0),
+          Prediction(
+              date: DateTime.now().add(const Duration(days: 1)), value: 4.0),
         ],
       ),
     ];
 
     List<Widget> cards = [];
-    cards.add(const SizedBox(height: 16)); // Espaço inicial entre a AppBar e os cards
+    cards.add(
+        const SizedBox(height: 16)); // Espaço inicial entre a AppBar e os cards
 
     for (var patient in patients) {
       cards.add(
@@ -77,7 +79,7 @@ class Homepage extends StatelessWidget {
     return cards;
   }
 
-  Widget _buildBottomButton() {
+  Widget _buildBottomButton(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.fromLTRB(8, 8, 8, 32),
       child: Row(
@@ -87,7 +89,9 @@ class Homepage extends StatelessWidget {
             height: 52,
             width: 245,
             child: ElevatedButton.icon(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.pushNamed(context, '/cadastrarPaciente');
+              },
               icon: const Icon(Icons.add, color: NeopesoColors.white),
               label: Text(
                 'Novo(a) Paciente',
@@ -112,13 +116,18 @@ class Homepage extends StatelessWidget {
   Widget build(BuildContext context) {
     double screenWidth = MediaQuery.of(context).size.width;
 
+    final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
+
     return Scaffold(
+      key: _scaffoldKey,
       appBar: AppBar(
         backgroundColor: NeopesoColors.white,
         elevation: 1.0,
         leading: IconButton(
           icon: const Icon(Icons.menu),
-          onPressed: () {},
+          onPressed: () {
+            _scaffoldKey.currentState?.openDrawer();
+          },
         ),
         title: Row(
           children: <Widget>[
@@ -140,11 +149,14 @@ class Homepage extends StatelessWidget {
           IconButton(
             icon: const Icon(Icons.question_mark_rounded),
             onPressed: () {
-              Navigator.push(context, MaterialPageRoute(builder: (context) => const Sobre()));
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => const Sobre()));
             },
           )
         ],
       ),
+      drawer: BarraLateral(
+          scaffoldKey: _scaffoldKey), // Use the BarraLateral widget
       body: Stack(
         children: <Widget>[
           Container(
@@ -180,7 +192,7 @@ class Homepage extends StatelessWidget {
                   children: _buildPatientCards(context, screenWidth),
                 ),
               ),
-              _buildBottomButton(),
+              _buildBottomButton(context),
             ],
           ),
         ],

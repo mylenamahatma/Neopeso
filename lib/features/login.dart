@@ -17,7 +17,7 @@ class Login extends StatelessWidget {
 }
 
 class FormLogin extends StatefulWidget {
-  const FormLogin({Key? key}) : super(key: key);
+  const FormLogin({super.key});
 
   @override
   State<FormLogin> createState() => _FormLoginState();

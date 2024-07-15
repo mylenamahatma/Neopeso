@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:neopeso/features/CadastroPaciente/CadastroPaciente.dart';
 import 'package:neopeso/features/homepage/homepage.dart';
 import 'package:neopeso/features/login.dart';
 import 'package:neopeso/features/onboarding/onboarding.dart';
@@ -18,7 +19,8 @@ class NeopesoApp extends StatelessWidget {
         '/cadastroProfissional': (context) => const CadastroProfissional(),
         '/login': (context) => const Login(),
         '/home': (context) => const Homepage(),
-        '/PersonalDataPrediction': (context) => const PersonalDataPrediction()
+        '/PersonalDataPrediction': (context) => const PersonalDataPrediction(),
+        '/cadastrarPaciente': (context) => const CadastroPaciente()
       },
     );
   }
