@@ -48,7 +48,7 @@ class PacientPage extends StatelessWidget {
     return cards;
   }
 
-  Widget _buildBottomButtons() {
+  Widget _buildBottomButtons(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.fromLTRB(8, 8, 8, 32),
       child: Column(
@@ -57,7 +57,9 @@ class PacientPage extends StatelessWidget {
             height: 52,
             width: 280,
             child: ElevatedButton.icon(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.pushNamed(context, '/PersonalDataPrediction');
+              },
               icon: const Icon(Icons.add, color: NeopesoColors.white),
               label: Text(
                 'Nova Predição',
@@ -131,7 +133,7 @@ class PacientPage extends StatelessWidget {
                   children: _buildPredictionsCards(context, screenWidth),
                 ),
               ),
-              _buildBottomButtons(),
+              _buildBottomButtons(context),
             ],
           ),
         ],
