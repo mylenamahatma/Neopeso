@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'dart:async';
 import 'package:neopeso/common/constants/neopeso_colors.dart';
 import 'package:neopeso/common/constants/neopeso_text_styles.dart';
-import '../login.dart';
+import 'login.dart';
 
 class Onboarding extends StatefulWidget {
   const Onboarding({super.key});
@@ -19,13 +19,15 @@ class OnboardingState extends State<Onboarding> {
       Navigator.pushReplacement(
         context,
         PageRouteBuilder(
-          pageBuilder: (context, animation, secondaryAnimation) => const Login(),
+          pageBuilder: (context, animation, secondaryAnimation) =>
+              const Login(),
           transitionsBuilder: (context, animation, secondaryAnimation, child) {
             const begin = Offset(0.0, 1.0);
             const end = Offset.zero;
             const curve = Curves.ease;
 
-            var tween = Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
+            var tween =
+                Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
             var offsetAnimation = animation.drive(tween);
 
             return SlideTransition(

@@ -16,7 +16,7 @@ class BarraLateral extends StatelessWidget {
             accountName: Text(
               "Carla",
               style: TextStyle(
-                color: Colors.black, // Mudando a cor do texto para preto
+                color: Colors.black,
                 fontSize: 20.0,
                 fontWeight: FontWeight.bold,
               ),
@@ -24,7 +24,7 @@ class BarraLateral extends StatelessWidget {
             accountEmail: Text(
               "Enfermeira Obstétrica",
               style: TextStyle(
-                color: Colors.black, // Mudando a cor do texto para preto
+                color: Colors.black,
                 fontSize: 14.0,
               ),
             ),

@@ -215,7 +215,6 @@ class _FormCadastroProfissionalState extends State<FormCadastroProfissional> {
                             'Ou cadastre-se com:',
                             style: TextStyle(
                               fontSize: 16.0,
-
                             ),
                           ),
                         ),
@@ -225,12 +224,11 @@ class _FormCadastroProfissionalState extends State<FormCadastroProfissional> {
                           children: [
                             Expanded(
                               child: ElevatedButton(
-                                onPressed: () {
-
-                                },
+                                onPressed: () {},
                                 style: ElevatedButton.styleFrom(
                                   backgroundColor: Colors.white,
-                                  padding: const EdgeInsets.symmetric(horizontal: 32.0, vertical: 16.0),
+                                  padding: const EdgeInsets.symmetric(
+                                      horizontal: 32.0, vertical: 16.0),
                                   elevation: 4,
                                 ),
                                 child: Row(
@@ -247,12 +245,11 @@ class _FormCadastroProfissionalState extends State<FormCadastroProfissional> {
                             const SizedBox(width: 15),
                             Expanded(
                               child: ElevatedButton(
-                                onPressed: () {
-
-                                },
+                                onPressed: () {},
                                 style: ElevatedButton.styleFrom(
                                   backgroundColor: Colors.white,
-                                  padding: const EdgeInsets.symmetric(horizontal: 32.0, vertical: 16.0),
+                                  padding: const EdgeInsets.symmetric(
+                                      horizontal: 32.0, vertical: 16.0),
                                   elevation: 4,
                                 ),
                                 child: Row(

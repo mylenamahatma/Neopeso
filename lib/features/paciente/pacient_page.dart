@@ -13,9 +13,11 @@ class PacientPage extends StatelessWidget {
     return DateFormat('yyyy-MM-dd').format(date);
   }
 
-  List<Widget> _buildPredictionsCards(BuildContext context, double screenWidth) {
+  List<Widget> _buildPredictionsCards(
+      BuildContext context, double screenWidth) {
     List<Widget> cards = [];
-    cards.add(const SizedBox(height: 16)); // Espaço inicial entre a AppBar e os cards
+    cards.add(
+        const SizedBox(height: 16));
 
     for (var prediction in patient.predictions) {
       cards.add(
@@ -42,7 +44,7 @@ class PacientPage extends StatelessWidget {
           ),
         ),
       );
-      cards.add(const SizedBox(height: 16)); // Espaço entre os cards
+      cards.add(const SizedBox(height: 16));
     }
 
     return cards;
@@ -75,13 +77,14 @@ class PacientPage extends StatelessWidget {
               ),
             ),
           ),
-          const SizedBox(height: 16), // Espaço entre os botões
+          const SizedBox(height: 16),
           SizedBox(
             height: 52,
             width: 280,
             child: ElevatedButton.icon(
               onPressed: () {},
-              icon: const Icon(Icons.analytics_outlined, color: NeopesoColors.white),
+              icon: const Icon(Icons.analytics_outlined,
+                  color: NeopesoColors.white),
               label: Text(
                 'Comparar Predições',
                 style: GoogleFonts.montserrat(

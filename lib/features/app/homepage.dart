@@ -3,9 +3,9 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:neopeso/common/constants/neopeso_colors.dart';
 import 'package:neopeso/entities/Prediction.dart';
 import 'package:neopeso/entities/patient.dart';
-import 'package:neopeso/features/BarraLateral/BarraLateral.dart';
-import 'package:neopeso/features/Sobre/sobre.dart';
-import '../pacient_page/pacient_page.dart';
+import 'package:neopeso/common/barra_lateral.dart';
+import 'package:neopeso/features/app/sobre.dart';
+import '../paciente/pacient_page.dart';
 
 class Homepage extends StatelessWidget {
   const Homepage({super.key});
@@ -42,8 +42,7 @@ class Homepage extends StatelessWidget {
     ];
 
     List<Widget> cards = [];
-    cards.add(
-        const SizedBox(height: 16)); // Espaço inicial entre a AppBar e os cards
+    cards.add(const SizedBox(height: 16));
 
     for (var patient in patients) {
       cards.add(
@@ -73,7 +72,7 @@ class Homepage extends StatelessWidget {
           ),
         ),
       );
-      cards.add(const SizedBox(height: 16)); // Espaço entre os cards
+      cards.add(const SizedBox(height: 16));
     }
 
     return cards;
@@ -155,8 +154,7 @@ class Homepage extends StatelessWidget {
           )
         ],
       ),
-      drawer: BarraLateral(
-          scaffoldKey: _scaffoldKey), // Use the BarraLateral widget
+      drawer: BarraLateral(scaffoldKey: _scaffoldKey),
       body: Stack(
         children: <Widget>[
           Container(

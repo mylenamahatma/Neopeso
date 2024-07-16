@@ -1,23 +1,24 @@
 import 'package:flutter/material.dart';
-import 'package:neopeso/features/results_page/results_page.dart';
+import 'package:neopeso/features/prediction/results_page.dart';
 
 class BirthDataPrediction extends StatelessWidget {
-  const BirthDataPrediction({Key? key}) : super(key: key);
+  const BirthDataPrediction({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return const Scaffold(
       backgroundColor: Colors.white,
-      body: const FormBirthDataPrediction(),
+      body: FormBirthDataPrediction(),
     );
   }
 }
 
 class FormBirthDataPrediction extends StatefulWidget {
-  const FormBirthDataPrediction({Key? key}) : super(key: key);
+  const FormBirthDataPrediction({super.key});
 
   @override
-  State<FormBirthDataPrediction> createState() => _FormBirthDataPredictionState();
+  State<FormBirthDataPrediction> createState() =>
+      _FormBirthDataPredictionState();
 }
 
 class _FormBirthDataPredictionState extends State<FormBirthDataPrediction> {
@@ -64,31 +65,31 @@ class _FormBirthDataPredictionState extends State<FormBirthDataPrediction> {
                         _buildCounterRow(
                           'Quantidade de partos anteriores',
                           partosAnteriores,
-                              (value) => setState(() => partosAnteriores = value),
+                          (value) => setState(() => partosAnteriores = value),
                         ),
                         const SizedBox(height: 24.0),
                         _buildCounterRow(
                           'Quantidade de cesáreas',
                           cesarias,
-                              (value) => setState(() => cesarias = value),
+                          (value) => setState(() => cesarias = value),
                         ),
                         const SizedBox(height: 24.0),
                         _buildCounterRow(
                           'Quantidade de partos normais',
                           partosNormais,
-                              (value) => setState(() => partosNormais = value),
+                          (value) => setState(() => partosNormais = value),
                         ),
                         const SizedBox(height: 24.0),
                         _buildCounterRow(
                           'Quantidade de filhos vivos',
                           filhosVivos,
-                              (value) => setState(() => filhosVivos = value),
+                          (value) => setState(() => filhosVivos = value),
                         ),
                         const SizedBox(height: 24.0),
                         _buildCounterRow(
                           'Quantidade de natimortos',
                           natimortos,
-                              (value) => setState(() => natimortos = value),
+                          (value) => setState(() => natimortos = value),
                         ),
                         const SizedBox(height: 24.0),
                         Row(
@@ -97,8 +98,8 @@ class _FormBirthDataPredictionState extends State<FormBirthDataPrediction> {
                             OutlinedButton(
                               style: OutlinedButton.styleFrom(
                                 backgroundColor: Colors.white,
-                                side: BorderSide(color: Color(0xFF295066)),
-                                foregroundColor: Color(0xFF295066),
+                                side: const BorderSide(color: Color(0xFF295066)),
+                                foregroundColor: const Color(0xFF295066),
                               ),
                               onPressed: () {
                                 Navigator.pop(context);
@@ -107,7 +108,7 @@ class _FormBirthDataPredictionState extends State<FormBirthDataPrediction> {
                             ),
                             ElevatedButton(
                               style: ElevatedButton.styleFrom(
-                                backgroundColor: Color(0xFF295066),
+                                backgroundColor: const Color(0xFF295066),
                                 foregroundColor: Colors.white,
                               ),
                               onPressed: () {
@@ -119,7 +120,7 @@ class _FormBirthDataPredictionState extends State<FormBirthDataPrediction> {
                                     ),
                                   );
                                 } else {
-                                  // Handle validation errors here
+                                  
                                 }
                               },
                               child: const Text('Enviar'),
@@ -205,5 +206,4 @@ class _FormBirthDataPredictionState extends State<FormBirthDataPrediction> {
       ],
     );
   }
-
 }

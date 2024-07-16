@@ -1,32 +1,34 @@
 import 'package:flutter/material.dart';
-import 'preganancy_data_prediction.dart';
+import 'birth_data_prediction.dart';
 
-class PersonalDataPrediction extends StatelessWidget {
-  const PersonalDataPrediction({Key? key}) : super(key: key);
+class PreganancyDataPrediction extends StatelessWidget {
+  const PreganancyDataPrediction({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      body: FormPersonalDataPrediction(),
+      body: const FormPreganancyDataPrediction(),
     );
   }
 }
 
-class FormPersonalDataPrediction extends StatefulWidget {
-  const FormPersonalDataPrediction({Key? key}) : super(key: key);
+class FormPreganancyDataPrediction extends StatefulWidget {
+  const FormPreganancyDataPrediction({Key? key}) : super(key: key);
 
   @override
-  State<FormPersonalDataPrediction> createState() => _FormPersonalDataPredictionState();
+  State<FormPreganancyDataPrediction> createState() =>
+      _FormPreganancyDataPredictionState();
 }
 
-class _FormPersonalDataPredictionState extends State<FormPersonalDataPrediction> {
+class _FormPreganancyDataPredictionState
+    extends State<FormPreganancyDataPrediction> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
-  String? estadoCivil;
-  String? ocupacao;
-  String? idade;
-  String? corRaca;
-  String? escolaridade;
+  String? anomalia;
+  String? mesGestacao;
+  String? paridade;
+  String? sexoBebe;
+  String? tipoGravidez;
 
   @override
   Widget build(BuildContext context) {
@@ -37,7 +39,7 @@ class _FormPersonalDataPredictionState extends State<FormPersonalDataPrediction>
           padding: const EdgeInsets.all(16.0),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisAlignment: MainAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
               _buildAppBar(context),
               Expanded(
@@ -49,7 +51,7 @@ class _FormPersonalDataPredictionState extends State<FormPersonalDataPrediction>
                       children: <Widget>[
                         const SizedBox(height: 8.0),
                         const Text(
-                          'Primeiro, forneça algumas informações sobre a paciente...',
+                          'Agora, nos informe alguns dados sobre a gestação...',
                           style: TextStyle(
                             fontSize: 16.0,
                           ),
@@ -57,14 +59,17 @@ class _FormPersonalDataPredictionState extends State<FormPersonalDataPrediction>
                         const SizedBox(height: 8.0),
                         Row(
                           children: [
-                            Container(
-                              width: MediaQuery.of(context).size.width * 0.2833,
-                              height: 8.0,
-                              color: Colors.orange,
+                            Expanded(
+                              flex: 2,
+                              child: Container(
+                                height: 8,
+                                color: Colors.blue,
+                              ),
                             ),
                             Expanded(
+                              flex: 1,
                               child: Container(
-                                height: 8.0,
+                                height: 8,
                                 color: Colors.grey,
                               ),
                             ),
@@ -72,7 +77,7 @@ class _FormPersonalDataPredictionState extends State<FormPersonalDataPrediction>
                         ),
                         const SizedBox(height: 24.0),
                         const Text(
-                          'Estado Civil',
+                          'Anomalia',
                           style: TextStyle(
                             fontSize: 16.0,
                             fontWeight: FontWeight.bold,
@@ -81,21 +86,13 @@ class _FormPersonalDataPredictionState extends State<FormPersonalDataPrediction>
                         const SizedBox(height: 4.0),
                         DropdownButtonFormField<String>(
                           decoration: InputDecoration(
-                            hintText: 'Selecionar opção',
-                            contentPadding: const EdgeInsets.symmetric(
-                                vertical: 14.0, horizontal: 10.0),
+                            contentPadding: const EdgeInsets.all(10.0),
                             border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(10.0),
                             ),
                           ),
-                          items: <String>[
-                            'Solteira',
-                            'Casada',
-                            'Viúva',
-                            'Separada/Divorciada',
-                            'União Estável',
-                            'Não Informado'
-                          ].map((String value) {
+                          items: <String>['Sim', 'Não', 'Não sabe informar']
+                              .map((String value) {
                             return DropdownMenuItem<String>(
                               value: value,
                               child: Text(value),
@@ -103,19 +100,19 @@ class _FormPersonalDataPredictionState extends State<FormPersonalDataPrediction>
                           }).toList(),
                           onChanged: (newValue) {
                             setState(() {
-                              estadoCivil = newValue;
+                              anomalia = newValue;
                             });
                           },
                           validator: (value) {
                             if (value == null || value.isEmpty) {
-                              return 'Selecionar opção';
+                              return 'Por favor, selecione uma opção';
                             }
                             return null;
                           },
                         ),
                         const SizedBox(height: 24.0),
                         const Text(
-                          'Ocupação',
+                          'Mês de gestação de início do pré-natal',
                           style: TextStyle(
                             fontSize: 16.0,
                             fontWeight: FontWeight.bold,
@@ -124,86 +121,32 @@ class _FormPersonalDataPredictionState extends State<FormPersonalDataPrediction>
                         const SizedBox(height: 4.0),
                         DropdownButtonFormField<String>(
                           decoration: InputDecoration(
-                            hintText: 'Selecionar opção',
-                            contentPadding: const EdgeInsets.symmetric(
-                                vertical: 14.0, horizontal: 10.0),
+                            contentPadding: const EdgeInsets.all(10.0),
                             border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(10.0),
                             ),
                           ),
-                          items: <String>[
-                            'Advogada',
-                            'Assistente Administrativa',
-                            'Autônoma',
-                            'Cabelereira',
-                            'Costureira',
-                            'Dona de casa',
-                            'Dona de comércio varegista',
-                            'Enfermeira',
-                            'Estudante',
-                            'Farmacêutica',
-                            'Manicure',
-                            'Operadora de Caixa',
-                            'Professora',
-                            'Trabalhadora Rural',
-                            'Recepcionista',
-                            'Serviços domésticos',
-                            'Outro'
-                          ].map((String value) {
+                          items: List.generate(9, (index) {
                             return DropdownMenuItem<String>(
-                              value: value,
-                              child: Text(value),
+                              value: (index + 1).toString(),
+                              child: Text('Mês ${index + 1}'),
                             );
                           }).toList(),
                           onChanged: (newValue) {
                             setState(() {
-                              ocupacao = newValue;
+                              mesGestacao = newValue;
                             });
                           },
                           validator: (value) {
                             if (value == null || value.isEmpty) {
-                              return 'Selecionar opção';
+                              return 'Por favor, selecione uma opção';
                             }
                             return null;
                           },
                         ),
                         const SizedBox(height: 24.0),
                         const Text(
-                          'Idade',
-                          style: TextStyle(
-                            fontSize: 16.0,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                        const SizedBox(height: 4.0),
-                        TextFormField(
-                          keyboardType: TextInputType.number,
-                          decoration: InputDecoration(
-                            hintText: 'Valor Numérico',
-                            contentPadding: const EdgeInsets.symmetric(
-                                vertical: 14.0, horizontal: 10.0),
-                            border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(10.0),
-                            ),
-                          ),
-                          onChanged: (newValue) {
-                            setState(() {
-                              idade = newValue;
-                            });
-                          },
-                          validator: (value) {
-                            if (value == null || value.isEmpty) {
-                              return 'Por favor, insira uma idade';
-                            }
-                            if (int.tryParse(value) == null) {
-                              return 'Por favor, insira um número válido';
-                            }
-                            return null;
-                          },
-                        ),
-                        const SizedBox(height: 24.0),
-                        const Text(
-                          'Cor/Raça',
+                          'Paridade',
                           style: TextStyle(
                             fontSize: 16.0,
                             fontWeight: FontWeight.bold,
@@ -212,20 +155,13 @@ class _FormPersonalDataPredictionState extends State<FormPersonalDataPrediction>
                         const SizedBox(height: 4.0),
                         DropdownButtonFormField<String>(
                           decoration: InputDecoration(
-                            hintText: 'Selecionar opção',
-                            contentPadding: const EdgeInsets.symmetric(
-                                vertical: 14.0, horizontal: 10.0),
+                            contentPadding: const EdgeInsets.all(10.0),
                             border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(10.0),
                             ),
                           ),
-                          items: <String>[
-                            'Branca',
-                            'Negra',
-                            'Parda',
-                            'Amarela',
-                            'Indígena'
-                          ].map((String value) {
+                          items: <String>['Multipara', 'Nulípara']
+                              .map((String value) {
                             return DropdownMenuItem<String>(
                               value: value,
                               child: Text(value),
@@ -233,19 +169,19 @@ class _FormPersonalDataPredictionState extends State<FormPersonalDataPrediction>
                           }).toList(),
                           onChanged: (newValue) {
                             setState(() {
-                              corRaca = newValue;
+                              paridade = newValue;
                             });
                           },
                           validator: (value) {
                             if (value == null || value.isEmpty) {
-                              return 'Selecionar opção';
+                              return 'Por favor, selecione uma opção';
                             }
                             return null;
                           },
                         ),
                         const SizedBox(height: 24.0),
                         const Text(
-                          'Escolaridade',
+                          'Sexo do bebê',
                           style: TextStyle(
                             fontSize: 16.0,
                             fontWeight: FontWeight.bold,
@@ -254,26 +190,15 @@ class _FormPersonalDataPredictionState extends State<FormPersonalDataPrediction>
                         const SizedBox(height: 4.0),
                         DropdownButtonFormField<String>(
                           decoration: InputDecoration(
-                            hintText: 'Selecionar opção',
-                            contentPadding: const EdgeInsets.symmetric(
-                                vertical: 14.0, horizontal: 10.0),
+                            contentPadding: const EdgeInsets.all(10.0),
                             border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(10.0),
                             ),
                           ),
                           items: <String>[
-                            'Analfabeta',
-                            'Primário I Incompleto',
-                            'Primário I Completo',
-                            'Ensino Fundamental I Incompleto',
-                            'Ensino Fundamental I Completo',
-                            'Ensino Fundamental II Incompleto',
-                            'Ensino Fundamental II Completo',
-                            'Ensino Médio Incompleto',
-                            'Ensino Médio Completo',
-                            'Graduação Incompleta',
-                            'Graduação Completa',
-                            'Não informado',
+                            'Masculino',
+                            'Feminino',
+                            'Não sabe informar'
                           ].map((String value) {
                             return DropdownMenuItem<String>(
                               value: value,
@@ -282,12 +207,51 @@ class _FormPersonalDataPredictionState extends State<FormPersonalDataPrediction>
                           }).toList(),
                           onChanged: (newValue) {
                             setState(() {
-                              escolaridade = newValue;
+                              sexoBebe = newValue;
                             });
                           },
                           validator: (value) {
                             if (value == null || value.isEmpty) {
-                              return 'Selecionar opção';
+                              return 'Por favor, selecione uma opção';
+                            }
+                            return null;
+                          },
+                        ),
+                        const SizedBox(height: 24.0),
+                        const Text(
+                          'Tipo de gravidez',
+                          style: TextStyle(
+                            fontSize: 16.0,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        const SizedBox(height: 4.0),
+                        DropdownButtonFormField<String>(
+                          decoration: InputDecoration(
+                            contentPadding: const EdgeInsets.all(10.0),
+                            border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(10.0),
+                            ),
+                          ),
+                          items: <String>[
+                            'Única',
+                            'Gemelar',
+                            'Múltipla',
+                            'Não sabe informar'
+                          ].map((String value) {
+                            return DropdownMenuItem<String>(
+                              value: value,
+                              child: Text(value),
+                            );
+                          }).toList(),
+                          onChanged: (newValue) {
+                            setState(() {
+                              tipoGravidez = newValue;
+                            });
+                          },
+                          validator: (value) {
+                            if (value == null || value.isEmpty) {
+                              return 'Por favor, selecione uma opção';
                             }
                             return null;
                           },
@@ -299,7 +263,7 @@ class _FormPersonalDataPredictionState extends State<FormPersonalDataPrediction>
                             OutlinedButton(
                               style: OutlinedButton.styleFrom(
                                 backgroundColor: Colors.white,
-                                side: BorderSide(color: Color(0xFF295066)),
+                                side: const BorderSide(color: Color(0xFF295066)),
                                 foregroundColor: Color(0xFF295066),
                               ),
                               onPressed: () {
@@ -309,20 +273,20 @@ class _FormPersonalDataPredictionState extends State<FormPersonalDataPrediction>
                             ),
                             ElevatedButton(
                               style: ElevatedButton.styleFrom(
-                                backgroundColor: Color(0xFF295066),
-                                foregroundColor: Colors.white,
+                                backgroundColor: const Color(0xFF295066),
+                                foregroundColor:
+                                    Colors.white,
                               ),
                               onPressed: () {
                                 if (_formKey.currentState!.validate()) {
                                   Navigator.push(
                                     context,
                                     MaterialPageRoute(
-                                      builder: (context) => const PreganancyDataPrediction(),
+                                      builder: (context) =>
+                                          const BirthDataPrediction(),
                                     ),
                                   );
-                                } else {
-                                  // Handle validation errors here
-                                }
+                                } else {}
                               },
                               child: const Text('Próximo'),
                             ),

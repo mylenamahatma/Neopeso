@@ -28,11 +28,16 @@ class BarraTelaInicial extends StatelessWidget {
           children: [
             ElevatedButton(
               style: ElevatedButton.styleFrom(
-                backgroundColor: isCadastroRoute ? NeopesoColors.white : Colors.lightBlueAccent,
-                padding: const EdgeInsets.symmetric(horizontal: 32.0, vertical: 16.0),
+                backgroundColor: isCadastroRoute
+                    ? NeopesoColors.white
+                    : Colors.lightBlueAccent,
+                padding: const EdgeInsets.symmetric(
+                    horizontal: 32.0, vertical: 16.0),
                 minimumSize: Size(MediaQuery.of(context).size.width * 0.3, 0),
                 elevation: 4,
-                side: isCadastroRoute ? const BorderSide(width: 1.0, color: Colors.black) :  BorderSide.none,
+                side: isCadastroRoute
+                    ? const BorderSide(width: 1.0, color: Colors.black)
+                    : BorderSide.none,
               ),
               onPressed: () {
                 Navigator.pushNamed(context, '/login');
@@ -48,10 +53,15 @@ class BarraTelaInicial extends StatelessWidget {
             ),
             OutlinedButton(
               style: ElevatedButton.styleFrom(
-                backgroundColor: isCadastroRoute ? Colors.lightBlueAccent : NeopesoColors.white,
-                padding: const EdgeInsets.symmetric(horizontal: 32.0, vertical: 16.0),
+                backgroundColor: isCadastroRoute
+                    ? Colors.lightBlueAccent
+                    : NeopesoColors.white,
+                padding: const EdgeInsets.symmetric(
+                    horizontal: 32.0, vertical: 16.0),
                 minimumSize: Size(MediaQuery.of(context).size.width * 0.3, 0),
-                side: isCadastroRoute ? BorderSide.none : const BorderSide(width: 1.0, color: Colors.black),
+                side: isCadastroRoute
+                    ? BorderSide.none
+                    : const BorderSide(width: 1.0, color: Colors.black),
               ),
               onPressed: () {
                 Navigator.pushNamed(context, '/cadastroProfissional');

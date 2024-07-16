@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:neopeso/common/constants/neopeso_colors.dart';
-import 'package:neopeso/features/BarraLateral/BarraLateral.dart';
-import 'package:neopeso/features/homepage/homepage.dart';
+import 'package:neopeso/common/barra_lateral.dart';
+import 'package:neopeso/features/app/homepage.dart';
 
 class ResultsPage extends StatelessWidget {
-  const ResultsPage({Key? key}) : super(key: key);
+  const ResultsPage({super.key});
 
-  Widget _buildResultCard(BuildContext context, double screenWidth, double screenHeight) {
+  Widget _buildResultCard(
+      BuildContext context, double screenWidth, double screenHeight) {
     return Container(
       padding: const EdgeInsets.all(16),
       margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 24),
@@ -38,8 +39,8 @@ class ResultsPage extends StatelessWidget {
           ),
           const Spacer(),
           Container(
-            width: 150,  // Aumenta a largura do círculo
-            height: 150, // Aumenta a altura do círculo
+            width: 150,
+            height: 150,
             decoration: BoxDecoration(
               shape: BoxShape.circle,
               border: Border.all(
@@ -48,11 +49,10 @@ class ResultsPage extends StatelessWidget {
               ),
             ),
             child: Center(
-              // Placeholder for the animation
               child: Text(
                 '75%',
                 style: GoogleFonts.montserrat(
-                  fontSize: 36, // Aumenta o tamanho da fonte
+                  fontSize: 36,
                   fontWeight: FontWeight.bold,
                   color: NeopesoColors.green,
                 ),
@@ -65,9 +65,7 @@ class ResultsPage extends StatelessWidget {
             child: Text(
               'probabilidade de peso grande ao nascer',
               style: GoogleFonts.montserrat(
-                fontSize: 22,
-                fontWeight: FontWeight.w600
-              ),
+                  fontSize: 22, fontWeight: FontWeight.w600),
               textAlign: TextAlign.center,
             ),
           ),
@@ -139,13 +137,13 @@ class ResultsPage extends StatelessWidget {
           IconButton(
             icon: const Icon(Icons.home),
             onPressed: () {
-              Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const Homepage()));
+              Navigator.pushReplacement(context,
+                  MaterialPageRoute(builder: (context) => const Homepage()));
             },
           )
         ],
       ),
-      drawer: BarraLateral(
-          scaffoldKey: _scaffoldKey),
+      drawer: BarraLateral(scaffoldKey: _scaffoldKey),
       body: Stack(
         children: <Widget>[
           Container(
@@ -175,9 +173,9 @@ class ResultsPage extends StatelessWidget {
           ),
           Column(
             children: <Widget>[
-              const Spacer(), // Adiciona espaço flexível acima do card
+              const Spacer(),
               _buildResultCard(context, screenWidth, screenHeight),
-              const Spacer(), // Adiciona espaço flexível abaixo do card
+              const Spacer(),
               _buildBottomButton(context),
             ],
           ),

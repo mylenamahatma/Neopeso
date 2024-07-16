@@ -15,28 +15,28 @@ class PopupErro extends StatelessWidget {
         title: Center(
           child: Text(
             msgErro,
-            textAlign: TextAlign.center, // Alinha o texto centralmente
+            textAlign: TextAlign.center,
           ),
         ),
         actions: <Widget>[
           ButtonBar(
             alignment: MainAxisAlignment
-                .center, // Centraliza os botões horizontalmente
+                .center,
             children: <Widget>[
               ElevatedButton(
                 onPressed: () => Navigator.pop(context, 'OK'),
                 style: ElevatedButton.styleFrom(
                   backgroundColor: const Color(0xFF00A271),
-                  padding: EdgeInsets.symmetric(
+                  padding: const EdgeInsets.symmetric(
                       horizontal: 24,
-                      vertical: 16), // Ajuste o padding conforme necessário
-                  minimumSize: Size(120, 0), // Largura mínima do botão
+                      vertical: 16),
+                  minimumSize: const Size(120, 0),
                 ),
                 child: const Text(
                   'OK',
                   style: TextStyle(
                       fontSize: 16,
-                      color: NeopesoColors.white), // Tamanho do texto do botão
+                      color: NeopesoColors.white),
                 ),
               ),
             ],
